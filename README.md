@@ -127,6 +127,3 @@ $message = new LogJob(string $subject, string $label, string $messageBody, array
 $this->jobManager->queue('log-message', $message);
 ```
 The queue name, routing keys etc. can be customized to fit your needs!
-
-
-
