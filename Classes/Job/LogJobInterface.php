@@ -18,6 +18,9 @@ interface LogJobInterface
 
     public function getMessageBody(): string;
 
+    /**
+     * @return mixed[]
+     */
     public function getAdditionalData(): array;
 
     public function getSeverity(): string;
