@@ -1,0 +1,48 @@
+t3n:
+  JobQueue:
+    Log:
+      logFailedJobs: true
+      logSubmittedJobs: true
+      logFinishedJobs: true
+
+Flowpack:
+  JobQueue:
+    Common:
+      queues:
+        # All queues should be adjusted to your needs / configurations to fit your exchange config
+        # We just provide different queues to send messages with different routing keys to an exchange
+        # these queues only acts as a producer and dont't need to be declared
+        log-info:
+          className: 't3n\JobQueue\RabbitMQ\Queue\RabbitQueue'
+          options:
+            routingKey: 'log.info'  # Adjust to your needs
+            queueOptions:
+              declare: false
+        log-success:
+          className: 't3n\JobQueue\RabbitMQ\Queue\RabbitQueue'
+          options:
+            routingKey: 'log.success'  # Adjust to your needs
+            queueOptions:
+              declare: false
+        log-error:
+          className: 't3n\JobQueue\RabbitMQ\Queue\RabbitQueue'
+          options:
+            routingKey: 'log.error'  # Adjust to your needs
+            queueOptions:
+              declare: false
+        log-message:
+          className: 't3n\JobQueue\RabbitMQ\Queue\RabbitQueue'
+          options:
+            routingKey: 'log.message'  # Adjust to your needs
+            queueOptions:
+              declare: false
+
+#        # example implementation for a consumer that fetches all logs
+#        # you could add several listener vor several routing keys
+#        log-listener:
+#          className: 't3n\JobQueue\Log\Queue\TransientRabbitQueue'
+#          options:
+#            routingKey: 'log.*'
+#            queueOptions:
+#              declare: true
+#              exchangeName: 'your-exchange'
